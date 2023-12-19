@@ -1,0 +1,73 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+    min-height: 500px;
+    padding: 40px;
+}
+
+
+body{
+    background-color: #5cdb95;
+}
+
+.container{
+    width: 400px;
+    border: 4px solid white;
+    background-color: #05386b;
+    padding: 20px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#display{
+    width: 342px;
+    background-color: aliceblue;
+    height: 70px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 5px solid #F96167;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#screen{
+    font-size: 50px;
+    font-weight: 700px;
+    display: flex;
+    align-items: end;
+}
+
+
+
+button{
+    cursor: pointer;
+    width: 90px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #F96167;
+    border: 2px solid black;
+    color: #E2D1F9;
+    font-weight: bold;
+    font-size: 25px;
+    gap: 10px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#fifth-row{
+    display:flex;
+    flex-grow: 1;
+    gap: 4px;
+}
+
+.buttons #equals{
+    flex-grow: 2;
+}

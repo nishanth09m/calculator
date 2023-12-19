@@ -5,7 +5,7 @@ let num2 = 0;
 let rator = "";
 const array = [];
 let operator = true;
-let displayValue = document.querySelector('h1');
+let displayValue = document.querySelector('#screen');
 
 
 //functions of calculation
@@ -41,82 +41,102 @@ function operate(num1, num2, rator){
 
 const one = document.querySelector("#one");
 one.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 1;
-        operator = false;
-    }else displayValue.innerHTML +=  1;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 1;
+            operator = false;
+        }else displayValue.innerHTML +=  1;
+    }
 })
 
 const two = document.querySelector('#two');
 two.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 2;
-        operator = false;
-    }else displayValue.innerHTML +=  2;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 2;
+            operator = false;
+        }else displayValue.innerHTML +=  2;
+    }
 })
 
 const three = document.querySelector("#three");
 three.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 3;
-        operator = false;
-    }else displayValue.innerHTML +=  3;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 3;
+            operator = false;
+        }else displayValue.innerHTML +=  3;
+    }
 })
 
 const four = document.querySelector('#four');
 four.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 4;
-        operator = false;
-    }else displayValue.innerHTML +=  4;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 4;
+            operator = false;
+        }else displayValue.innerHTML +=  4;
+    }
 })
 
 const five = document.querySelector("#five");
 five.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 5;
-        operator = false;
-    }else displayValue.innerHTML +=  5;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 5;
+            operator = false;
+        }else displayValue.innerHTML +=  5;
+    }
 })
 
 const six = document.querySelector('#six');
 six.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 6;
-        operator = false;
-    }else displayValue.innerHTML +=  6;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 6;
+            operator = false;
+        }else displayValue.innerHTML +=  6;
+    }
 })
 
 const seven = document.querySelector("#seven");
 seven.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 7;
-        operator = false;
-    }else displayValue.innerHTML +=  7;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 7;
+            operator = false;
+        }else displayValue.innerHTML +=  7;
+    }
 })
 
 const eight = document.querySelector('#eight');
 eight.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 8;
-        operator = false;
-    }else displayValue.innerHTML +=  8;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 8;
+            operator = false;
+        }else displayValue.innerHTML +=  8;
+    }
 })
 
 const nine = document.querySelector("#nine");
 nine.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 9;
-        operator = false;
-    }else displayValue.innerHTML +=  9;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 9;
+            operator = false;
+        }else displayValue.innerHTML +=  9;
+    }
 })
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', (event) =>{
-    if(operator) {
-        displayValue.innerHTML = 0;
-        operator = false;
-    }else displayValue.innerHTML +=  0;
+    if(displayValue.textContent.length < 11){
+        if(operator) {
+            displayValue.innerHTML = 0;
+            operator = false;
+        }else displayValue.innerHTML +=  0;
+    }
 })
 
 // operators
@@ -131,7 +151,7 @@ plus.addEventListener('click', (event) =>{
             num1 = Number(array[0]);
             num2 = Number(array[2]);
             rator = array[1];
-            displayValue.textContent = operate(num1, num2, rator);
+            displayValue.textContent = operate(num1, num2, rator).toPrecision(9);
             array.splice(0, array.length);
             array.push(displayValue.textContent);
         }
@@ -153,7 +173,7 @@ equals.addEventListener('click', (event) =>{
             displayValue.textContent = "Moron";
             operator = true;
         } else {
-            displayValue.textContent = operate(num1, num2, rator);
+            displayValue.textContent = operate(num1, num2, rator).toPrecision(6);
         }
         array.splice(0, array.length);
     }
@@ -169,7 +189,7 @@ minus.addEventListener('click', (event) =>{
             num1 = Number(array[0]);
             num2 = Number(array[2]);
             rator = array[1];
-            displayValue.textContent = operate(num1, num2, rator);
+            displayValue.textContent = operate(num1, num2, rator).toPrecision(6);
             array.splice(0, array.length);
             array.push(displayValue.textContent);
         }    array.push("-");
@@ -186,7 +206,7 @@ multi.addEventListener('click', (event) =>{
             num1 = Number(array[0]);
             num2 = Number(array[2]);
             rator = array[1];
-            displayValue.textContent = operate(num1, num2, rator);
+            displayValue.textContent = operate(num1, num2, rator).toPrecision(6);
             array.splice(0, array.length);
             array.push(displayValue.textContent);
         }    array.push("*");
@@ -204,7 +224,7 @@ divid.addEventListener('click', (event) =>{
             num2 = Number(array[2]);
             rator = array[1];
             if(num2 === 0 ) displayValue.textContent = "Moron";
-            else displayValue.textContent = operate(num1, num2, rator);
+            else displayValue.textContent = operate(num1, num2, rator).toPrecision(6);
             array.splice(0, array.length);
             array.push(displayValue.textContent);
         }    array.push("/");
@@ -222,7 +242,7 @@ modul.addEventListener('click', (event) => {
             num2 = Number(array[2]);
             rator = array[1];
             if(num2 === 0 ) displayValue.textContent = "Moron";
-            else displayValue.textContent = operate(num1, num2, rator);
+            else displayValue.textContent = operate(num1, num2, rator).toPrecision(6);
             array.splice(0, array.length);
             array.push(displayValue.textContent);
         }    array.push("%");
