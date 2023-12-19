@@ -1,9 +1,14 @@
+//variable declaration
+
 let num1 = 0;
 let num2 = 0;
 let rator = "";
 const array = [];
 let operator = true;
+let displayValue = document.querySelector('h1');
 
+
+//functions of calculation
 function add(a,b){
     return a + b;
 }
@@ -31,8 +36,6 @@ function operate(num1, num2, rator){
     else if(rator === "/") return divide(num1, num2);
     else if(rator === "%") return modulo(num1, num2);
 }
-
-let displayValue = document.querySelector('h1');
  
 // numbers
 
@@ -121,9 +124,9 @@ zero.addEventListener('click', (event) =>{
 
 const plus = document.querySelector("#add");
 plus.addEventListener('click', (event) =>{
+    let display = displayValue.textContent;
+    array.push(display);
     if(array[array.length - 1] !== "+"){
-        let display = displayValue.textContent;
-        array.push(display);
         if(array.length === 3){
             num1 = Number(array[0]);
             num2 = Number(array[2]);
@@ -134,29 +137,34 @@ plus.addEventListener('click', (event) =>{
         }
         array.push("+");
         operator = true;
-    }
+    }else array.pop();
 });
 
 const equals = document.querySelector("#equals");
 equals.addEventListener('click', (event) =>{
-    let display = displayValue.textContent;
-    num2 = Number(display);
-    num1 = Number(array[0]);
-    rator = array[1];
-    if(num2 === 0 && (rator === "/" || rator === "%")){
-        displayValue.textContent = "Moron";
-        operator = true;
-    } else {
-        displayValue.textContent = operate(num1, num2, rator);
+    if(array.length < 2){
+        displayValue.textContent = "Math Error";
+    }else{
+        let display = displayValue.textContent;
+        num2 = Number(display);
+        num1 = Number(array[0]);
+        rator = array[1];
+        if(num2 === 0 && (rator === "/" || rator === "%")){
+            displayValue.textContent = "Moron";
+            operator = true;
+        } else {
+            displayValue.textContent = operate(num1, num2, rator);
+        }
+        array.splice(0, array.length);
     }
-    array.splice(0, array.length);
+    operator = true;
 });
 
 const minus = document.querySelector('#subtract');
 minus.addEventListener('click', (event) =>{
+    let display = displayValue.textContent;
+    array.push(display);
     if(array[array.length - 1] !== "-"){
-        let display = displayValue.textContent;
-        array.push(display);
         if(array.length === 3){
             num1 = Number(array[0]);
             num2 = Number(array[2]);
@@ -166,14 +174,14 @@ minus.addEventListener('click', (event) =>{
             array.push(displayValue.textContent);
         }    array.push("-");
         operator = true;
-    }
+    }else array.pop();
 });
 
 const multi = document.querySelector("#multiply");
 multi.addEventListener('click', (event) =>{
+    let display = displayValue.textContent;
+    array.push(display);
     if(array[array.length - 1] !== "*"){
-        let display = displayValue.textContent;
-        array.push(display);
         if(array.length === 3){
             num1 = Number(array[0]);
             num2 = Number(array[2]);
@@ -183,14 +191,14 @@ multi.addEventListener('click', (event) =>{
             array.push(displayValue.textContent);
         }    array.push("*");
         operator = true;
-    }
+    }else array.pop();
 });
 
 const divid = document.querySelector('#divide');
 divid.addEventListener('click', (event) =>{
+    let display = displayValue.textContent;
+    array.push(display);
     if(array[array.length - 1] !== "/"){
-        let display = displayValue.textContent;
-        array.push(display);
         if(array.length === 3){
             num1 = Number(array[0]);
             num2 = Number(array[2]);
@@ -201,14 +209,14 @@ divid.addEventListener('click', (event) =>{
             array.push(displayValue.textContent);
         }    array.push("/");
         operator = true;
-    }
+    }else array.pop();
 });
 
 const modul = document.querySelector('#modulo');
 modul.addEventListener('click', (event) => {
+    let display = displayValue.textContent;
+    array.push(display);
     if(array[array.length - 1] !== "%"){
-        let display = displayValue.textContent;
-        array.push(display);
         if(array.length === 3){
             num1 = Number(array[0]);
             num2 = Number(array[2]);
@@ -219,7 +227,7 @@ modul.addEventListener('click', (event) => {
             array.push(displayValue.textContent);
         }    array.push("%");
         operator = true;
-    }
+    }else array.pop();
 });
 
  const backspace = document.querySelector('#backspace');
@@ -227,8 +235,6 @@ modul.addEventListener('click', (event) => {
     let display = displayValue.textContent;
     const arr = display.split('')
     arr.splice(display.length - 1, 1);
-    console.log(arr);
-    console.log(arr.length);
     if(arr.length === 0){
         displayValue.textContent = 0;
         operator = true;
